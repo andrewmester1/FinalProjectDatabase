@@ -9,7 +9,7 @@ $last_name = "";
 $errors = array();
 
 
-$db = mysqli_connect('localhost','root','','testproject') or die("could not connect to database");
+$db = mysqli_connect('localhost','root','','electronicstore') or die("could not connect to database");
 
 if (isset($_POST["reg_user"])){
 $username = mysqli_real_escape_string($db, $_POST["username"]);
@@ -48,31 +48,3 @@ if(count($errors)==0)
 }
 }
 
-if (isset($_POST["login_user"])){
-	//echo "Test1";
-	$username = mysqli_real_escape_string($db, $_POST['username']);
-	$password = mysqli_real_escape_string($db, $_POST['password']);
-	if(empty($username)){
-		
-	  array_push($errors, "Username is required");
-	}
-	
-	if(empty($password)){
-	  array_push($errors, "Password is required");
-	}
-	
-	//echo "Test1";
-	if (count($errors) == 0) {
-		
-		$password = md5($password);
-		$query = "SELECT * FROM customer WHERE CUST_USERNAME='$username' AND password='$password'";
-		$results = mysqli_query($db, $query);
-		if(mysqli_num_rows($results)){
-			$_SESSION['username']= $username;
-			$_SESSION['success']= "Logged in successfully";
-			header('location: index.php');}
-		else {array_push($errors, "Wrong username and or password");}
-	}
-	}		
-
-?>

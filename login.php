@@ -1,4 +1,30 @@
-<?php include('./server.php')?>
+<?php 
+    $con = mysqli_connect('localhost','root');
+    mysqli_select_db($con,'electronicstore');
+    if ($con->connect_error) {
+        die("Connection failed: " . $con->connect_error);
+    }
+
+    if(isset($_POST['username'])){
+        $username=$_POST['username'];
+        $password=$_POST['password'];
+        $password=md5($password);
+
+        $sql="select * from customer where CUST_USERNAME='".$username."' AND CUST_PASSWORD='".$password."'
+        limit 1";
+
+        $results=$con->query($sql);
+
+        if(mysqli_num_rows($results)==1){
+            header("Location: http://localhost/index.php", true, 301);
+            exit();
+        }
+        else{
+            echo "<script>alert('You have entered an incorrect password. Try again!');</script>";
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -66,7 +92,7 @@
                     <input type="password" name="password" placeholder="Password"/>
                 </div>
                 <p style="line-height:3.5em;"></p>
-                <input type="submit" name="submit" value="LOGIN" class="btn btn-outline-light mt-auto"/>
+                <input type="submit" name="login_user" value="LOGIN" class="btn btn-outline-light mt-auto"/>
                         </form>
                     </div>
                 <p style="line-height:3.5em;"></p>
