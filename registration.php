@@ -15,6 +15,7 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
+        
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
@@ -55,7 +56,8 @@
                     <p class="lead fw-normal text-white-50 mb-0"></p>
                     <div class="container">
                         <p style="line-height:3.5em;"></p>
-                        <form>
+                        <form action="/registration.php" method="post"> 
+			                <?php include('./errors.php')?>
                             <p style="line-height:0.5em;">Create a Username</p>
                             <div class= "form_input">
                                 <input type="text" name="username" placeholder="Create a Username" required/>

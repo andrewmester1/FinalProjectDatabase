@@ -22,7 +22,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -31,9 +30,7 @@
                                 <li><a class="dropdown-item" href="tv.php">TVs</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="games.php">Games</a></li>
-                               
-                               
-                            </ul>
+                                </ul>
                         </li>
                     </ul>
                     <form class="d-flex">
@@ -43,7 +40,9 @@
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </form>
+                   
                 </div>
+                <a class="nav-item"><a class="nav-link" href="login.php">Log Out</a>
             </div>
         </nav>
         <!-- Header-->

@@ -1,3 +1,4 @@
+<?php include('./server.php')?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,7 +15,7 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
-        <!-- Navigation-->
+        <!-- Navigation
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="#!">Electronic Store</a>
@@ -22,7 +23,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -44,7 +44,7 @@
                     </form>
                 </div>
             </div>
-        </nav>
+        </nav>-->
         <!-- Header-->
         <header class="bg-red py-5">
             <div class="container px-4 px-lg-5 my-5">
@@ -55,7 +55,7 @@
                     <div class="container">
                         <img class="card-img-top" src="../resources/rcoklick.jpg"/>
                         <p style="line-height:3.5em;"></p>
-                        <form>
+                        <form action="/login.php" method="post">
                             <p style="line-height:0.5em;">Enter Your Username</p>
                             <div class= "form_input">
                                 <input type="text" name="username" placeholder="Username"/>
