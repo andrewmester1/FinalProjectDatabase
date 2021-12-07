@@ -1,8 +1,8 @@
 <?php 
-    $con = mysqli_connect('localhost','root');
-    mysqli_select_db($con,'electronicstore');
-    if ($con->connect_error) {
-        die("Connection failed: " . $con->connect_error);
+    $conn = mysqli_connect('localhost','root');
+    mysqli_select_db($conn,'electronicstore');
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
 
     if(isset($_POST['username'])){

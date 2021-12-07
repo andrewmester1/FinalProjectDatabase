@@ -38,7 +38,7 @@ $con = mysqli_connect('localhost','root');
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    <form class="d-flex" action="cartpage.php">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
