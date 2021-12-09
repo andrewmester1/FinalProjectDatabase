@@ -35,7 +35,7 @@
                                 </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    <form class="d-flex" action="cartpage.php">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
@@ -58,7 +58,7 @@
         </header>
         <!-- Section-->
         <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
+        <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <?php 
                     $sql = "SELECT * FROM product WHERE PRODUCT_TYPE='games';";
@@ -70,6 +70,7 @@
                         {?>
                         <div class="col mb-5">
                         <div class="card h-100">
+                        <form method="post" action="cartpage.php?id=<?=$row['PRODUCT_ID']?>">
                             <!-- Product image-->
                             <img class="card-img-top" src="<?= $row['PRODUCT_IMG']?>" alt="..." />
                             <!-- Product details-->
@@ -82,11 +83,19 @@
                                     <!-- Product price-->
                                     $<?=$row['PRODUCT_PRICE'];?>
                                 </div>
-                            </div>
-                            <!-- Product actions-->
+                            <input type="hidden" name="name" value="<?=$row['PRODUCT_DESC']?>">
+                            <input type="hidden" name="price" value="<?=$row['PRODUCT_PRICE']?>">
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                            <div class="text-center">
+                            <input type="submit" name="add" class="btn btn-outline-dark mt-auto" value="Add to Cart">
                             </div>
+                            </div>
+                        </div>
+                            <!-- Product actions-->
+                         <!--   <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                            </div>-->
+                            </form>
                         </div>
                     </div>
                         <?php }

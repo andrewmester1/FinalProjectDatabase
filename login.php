@@ -13,7 +13,7 @@
         $sql="select * from customer where CUST_USERNAME='".$username."' AND CUST_PASSWORD='".$password."'
         limit 1";
 
-        $results=$con->query($sql);
+        $results=$conn->query($sql);
 
         if(mysqli_num_rows($results)==1){
             header("Location: http://localhost/index.php", true, 301);
@@ -79,7 +79,6 @@
                     <p style="line-height:3.5em;"></p>
                     <p class="lead fw-normal text-white-50 mb-0"></p>
                     <div class="container">
-                        <img class="card-img-top" src="../resources/rcoklick.jpg"/>
                         <p style="line-height:3.5em;"></p>
                         <form action="/login.php" method="post">
                             <p style="line-height:0.5em;">Enter Your Username</p>
