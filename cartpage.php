@@ -1,6 +1,5 @@
 <?php
   session_start();
-
   $db = mysqli_connect("localhost","root","","electronicstore");
   if(isset($_POST["add"]))
 {
@@ -15,6 +14,10 @@
 				'item_name'			=>	$_POST["name"],
 				'item_price'		=>	$_POST["price"],
 			);
+            $item_name=$_POST["name"];
+            $item_price=$_POST["price"];
+            $query="INSERT INTO shopping_cart(item_name,item_price) VALUES ('$item_name','$item_price')";
+            mysqli_query($db,$query);
 			$_SESSION["shopping_cart"][$count] = $item_array;
 		}
 		else
@@ -29,6 +32,10 @@
 			'item_name'			=>	$_POST["name"],
 			'item_price'		=>	$_POST["price"],
 		);
+        $item_name=$_POST["name"];
+        $Item_price=$_POST["price"];
+        $query="INSERT INTO shopping_cart(item_name,item_price) VALUES ('$item_name','$item_price')";
+        mysqli_query($db,$query);
 		$_SESSION["shopping_cart"][0] = $item_array;
 	}
 }
@@ -41,7 +48,10 @@ if(isset($_GET["action"]))
 		{
 			if($values["item_id"] == $_GET["id"])
 			{
+                $item_name=$values['item_name'];
 				unset($_SESSION["shopping_cart"][$keys]);
+                $query="DELETE FROM shopping_cart WHERE item_name = '$item_name'";
+                mysqli_query($db,$query);
 				echo '<script>alert("Item Removed")</script>';
 				echo '<script>window.location="cartpage.php"</script>';
 			}
@@ -90,7 +100,6 @@ if(isset($_GET["action"]))
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </form>
                    
@@ -110,7 +119,6 @@ if(isset($_GET["action"]))
         <section class="py-5">
         <div style="clear:both"></div>
 			<br />
-			<h3>Order Details</h3>
 			<div class="table-responsive">
 				<table class="table table-bordered">
 					<tr>
