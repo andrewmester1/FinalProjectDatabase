@@ -47,4 +47,23 @@ if(count($errors)==0)
     header('location: ./index.php');
 }
 }
+if(isset($_POST['username'])){
+    $username=$_POST['username'];
+    $password=$_POST['password'];
+    $password=md5($password);
 
+    $sql="select * from customer where CUST_USERNAME='".$username."' AND CUST_PASSWORD='".$password."'
+    limit 1";
+
+    $results=$db->query($sql);
+
+    if(mysqli_num_rows($results)==1){
+        header("Location: http://localhost/index.php", true, 301);
+        exit();
+    }
+    else{
+        echo "<script>alert('You have entered an incorrect password. Try again!');</script>";
+    }
+}
+
+?>

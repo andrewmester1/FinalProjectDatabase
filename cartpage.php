@@ -1,6 +1,7 @@
 <?php
-  session_start();
-  $db = mysqli_connect("localhost","root","","electronicstore");
+  include('./server.php');
+  /*session_start();
+  $db = mysqli_connect("localhost","root","","electronicstore");*/
   if(isset($_POST["add"]))
 {
 	if(isset($_SESSION["shopping_cart"]))
@@ -14,9 +15,10 @@
 				'item_name'			=>	$_POST["name"],
 				'item_price'		=>	$_POST["price"],
 			);
+            $item_id=$_GET["id"];
             $item_name=$_POST["name"];
             $item_price=$_POST["price"];
-            $query="INSERT INTO shopping_cart(item_name,item_price) VALUES ('$item_name','$item_price')";
+            $query="INSERT INTO shopping_cart(item_id,item_name,item_price) VALUES ('$item_id','$item_name','$item_price')";
             mysqli_query($db,$query);
 			$_SESSION["shopping_cart"][$count] = $item_array;
 		}
@@ -58,7 +60,33 @@ if(isset($_GET["action"]))
 		}
 	}
 }
+/*
+	if(isset($_POST["buy"]))
+	{
 
+                $query2="SELECT CUST_ID FROM customer WHERE CUST_USERNAME = '$username'";
+                $resultuser=$db->query($query2);
+				$resultuser=mysqli_fetch_assoc($resultuser);
+				$query3="SELECT * FROM shopping_cart";
+				$resultitem=$db->query($query3);
+				echo "Items";
+				var_dump($resultitem);
+				echo "username";
+				var_dump($resultuser);
+				if(mysqli_num_rows($resultitem)>0)
+				{
+					while($row = mysqli_fetch_assoc($resultitem))
+					{
+					//$query="INSERT INTO invoice(PRODUCT_ID,CUST_ID) VALUES ('${row['item_id']}','${resultuser['CUST_ID']}')";
+					$query="INSERT INTO invoice(PRODUCT_ID,CUST_ID) VALUES ('${row['item_id']}', 2)";
+					mysqli_query($db,$query);
+					}
+					
+				}
+				
+				//echo '<script>window.location="cartpage.php"</script>';
+	}
+	*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,9 +180,17 @@ if(isset($_GET["action"]))
 					<?php
 					}
 					?>
-						
+					
 				</table>
+				
 			</div>
+			<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+							<form method="post">
+                            <input type="submit" name="buy" class="btn btn-outline-dark mt-auto" value="Checkout"></div>
+							</form>
+							</div>
+							
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
