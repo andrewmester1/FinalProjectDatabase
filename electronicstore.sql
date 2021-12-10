@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2021 at 05:27 PM
+-- Generation Time: Dec 10, 2021 at 07:45 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -42,7 +42,10 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`CUST_ID`, `CUST_FNAME`, `CUST_LNAME`, `CUST_EMAIL`, `CUST_USERNAME`, `CUST_PASSWORD`) VALUES
 (1, 'andrew', 'mester', 'email@email.com', 'andrew', '5f4dcc3b5aa765d61d8327deb882cf99'),
-(2, 'Guy', 'Fieri', 'guyfieri@flavortown.com', 'GuyF123', 'e06d7db9940a817c933d34869aa13798');
+(2, 'Guy', 'Fieri', 'guyfieri@flavortown.com', 'GuyF123', 'e06d7db9940a817c933d34869aa13798'),
+(3, 'drew', 'bella', 'drewb@brazzers.com', 'drewb', '0b9a54438fba2dc0d39be8f7c6c71a58'),
+(5, 'BOB', 'dylan', 'bobdylan@music.com', 'Bobdylan', '319f4d26e3c536b5dd871bb2c52e3178'),
+(6, 'ihab', 'darwish', 'idarwish@fdu.edu', 'ihabd', '5f4dcc3b5aa765d61d8327deb882cf99');
 
 -- --------------------------------------------------------
 
@@ -90,6 +93,18 @@ INSERT INTO `product` (`PRODUCT_ID`, `PRODUCT_PRICE`, `PRODUCT_QUANTITY`, `PRODU
 (12, '700', 5, 'LG NanoCell 80 Series', '../resources/lgtv.jpg', 'TV'),
 (13, '750', 5, 'VIZIO 65-Inch M-Series', '../resources/vizio.jpg', 'TV'),
 (14, '650', 5, 'TCL 55-inch 6-Series 4K', '../resources/tcltv.jpg', 'TV');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shopping_cart`
+--
+
+CREATE TABLE `shopping_cart` (
+  `item_id` int(11) NOT NULL,
+  `item_name` varchar(30) NOT NULL,
+  `item_price` decimal(10,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -188,6 +203,12 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`PRODUCT_ID`);
 
 --
+-- Indexes for table `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  ADD PRIMARY KEY (`item_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -195,19 +216,25 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUST_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CUST_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `INV_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `INV_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `PRODUCT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `PRODUCT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
