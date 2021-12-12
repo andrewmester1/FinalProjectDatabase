@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2021 at 03:47 PM
+-- Generation Time: Dec 12, 2021 at 07:50 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -81,7 +81,7 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`PRODUCT_ID`, `PRODUCT_PRICE`, `PRODUCT_QUANTITY`, `PRODUCT_DESC`, `PRODUCT_IMG`, `PRODUCT_TYPE`) VALUES
 (1, '1250', 2, 'HP Spectre 13.5\"', '../resources/hpspectre14.jpg', 'laptop'),
 (2, '1000', 2, 'Lenovo Thinkpad X1 Carbon', '../resources/thinkpad.jpg', 'laptop'),
-(3, '1500', 1, 'Macbook Air', '../resources/macbookair.jpg', 'laptop'),
+(3, '1500', 1, 'Apple Macbook Air', '../resources/macbookair.jpg', 'laptop'),
 (4, '900', 1, 'Sony X90J 50 Inch TV', '../resources/SonyTV.jpg', 'TV'),
 (5, '60', 2, 'Rainbow Six Siege', '../resources/rainbow.jpg', 'games'),
 (6, '2000', 3, 'Apple Macbook Pro 14\"', '../resources/macbookpro14.jpg', 'laptop'),
@@ -250,13 +250,13 @@ ALTER TABLE `invoice`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `PRODUCT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `PRODUCT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
