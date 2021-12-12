@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2021 at 07:45 PM
+-- Generation Time: Dec 12, 2021 at 03:47 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -43,7 +43,7 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`CUST_ID`, `CUST_FNAME`, `CUST_LNAME`, `CUST_EMAIL`, `CUST_USERNAME`, `CUST_PASSWORD`) VALUES
 (1, 'andrew', 'mester', 'email@email.com', 'andrew', '5f4dcc3b5aa765d61d8327deb882cf99'),
 (2, 'Guy', 'Fieri', 'guyfieri@flavortown.com', 'GuyF123', 'e06d7db9940a817c933d34869aa13798'),
-(3, 'drew', 'bella', 'drewb@brazzers.com', 'drewb', '0b9a54438fba2dc0d39be8f7c6c71a58'),
+(3, 'drew', 'bella', 'drewb@gmail.com', 'drewb', '0b9a54438fba2dc0d39be8f7c6c71a58'),
 (5, 'BOB', 'dylan', 'bobdylan@music.com', 'Bobdylan', '319f4d26e3c536b5dd871bb2c52e3178'),
 (6, 'ihab', 'darwish', 'idarwish@fdu.edu', 'ihabd', '5f4dcc3b5aa765d61d8327deb882cf99');
 
@@ -92,7 +92,8 @@ INSERT INTO `product` (`PRODUCT_ID`, `PRODUCT_PRICE`, `PRODUCT_QUANTITY`, `PRODU
 (11, '30', 10, 'Bioshock', '../resources/bioshock.jpg', 'games'),
 (12, '700', 5, 'LG NanoCell 80 Series', '../resources/lgtv.jpg', 'TV'),
 (13, '750', 5, 'VIZIO 65-Inch M-Series', '../resources/vizio.jpg', 'TV'),
-(14, '650', 5, 'TCL 55-inch 6-Series 4K', '../resources/tcltv.jpg', 'TV');
+(14, '650', 5, 'TCL 55-inch 6-Series 4K', '../resources/tcltv.jpg', 'TV'),
+(16, '1600', 5, 'Apple Macbook Pro 13\"', '../resources/macbookair.jpg', 'laptop');
 
 -- --------------------------------------------------------
 
@@ -139,6 +140,18 @@ CREATE TABLE `view laptops` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `view shopping_cart`
+-- (See below for the actual view)
+--
+CREATE TABLE `view shopping_cart` (
+`item_id` int(11)
+,`item_name` varchar(30)
+,`item_price` decimal(10,0)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `view tvs`
 -- (See below for the actual view)
 --
@@ -168,6 +181,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `view laptops`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view laptops`  AS SELECT `product`.`PRODUCT_ID` AS `PRODUCT_ID`, `product`.`PRODUCT_PRICE` AS `PRODUCT_PRICE`, `product`.`PRODUCT_QUANTITY` AS `PRODUCT_QUANTITY`, `product`.`PRODUCT_DESC` AS `PRODUCT_DESC`, `product`.`PRODUCT_IMG` AS `PRODUCT_IMG`, `product`.`PRODUCT_TYPE` AS `PRODUCT_TYPE` FROM `product` WHERE `product`.`PRODUCT_TYPE` = 'laptop' ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view shopping_cart`
+--
+DROP TABLE IF EXISTS `view shopping_cart`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view shopping_cart`  AS SELECT `shopping_cart`.`item_id` AS `item_id`, `shopping_cart`.`item_name` AS `item_name`, `shopping_cart`.`item_price` AS `item_price` FROM `shopping_cart` ;
 
 -- --------------------------------------------------------
 
@@ -228,13 +250,13 @@ ALTER TABLE `invoice`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `PRODUCT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `PRODUCT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
